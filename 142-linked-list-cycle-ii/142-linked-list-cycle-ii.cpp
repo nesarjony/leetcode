@@ -8,32 +8,33 @@
  */
 class Solution {
 public:
-    int getPos(ListNode *head, ListNode *node)
-    {
-        ListNode *curr = head;
-        int index = 0;
-        while(true) {
-            if (curr->val == node->val && curr->next == node->next) {
-                return index;
-            }
-            index++;
-        }
-    }
-    
     ListNode *detectCycle(ListNode *head) {
         if (head == NULL || head->next == NULL)
             return NULL;
         
-        ListNode *curr = head;
-        map<ListNode*, bool> mp;
+        ListNode *slow = head->next;
+        ListNode *fast = head->next->next;
         
-        while(curr != NULL) {
-            if (mp.count(curr) > 0) {
-                return curr;
+        while(true) {
+            if (slow == NULL || fast == NULL || fast->next == NULL)
+                return NULL;
+            
+            if (slow->val == fast->val && slow->next == fast->next) 
+            {
+                ListNode *pt = head;
+                ListNode *qt = slow;
+                while (true) {
+                    if (qt->val == pt->val && qt->next == pt->next) {
+                        return qt;
+                    }
+                    qt = qt->next;
+                    pt = pt->next;
+                }
             }
-            mp[curr] = true;
-            curr = curr->next;
+            
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        return NULL;
     }
 };
+
