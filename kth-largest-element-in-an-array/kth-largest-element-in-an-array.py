@@ -36,9 +36,6 @@ class Heap:
             self.swap(node, self._get_parent_node(node))
             node = self._get_parent_node(node)
     
-    def printf(self):
-        print(' '.join(str(x) for x in self._items))
-    
     def peek(self):
         if self.len == 0:
             raise Exception("Argument invalid")
@@ -74,11 +71,7 @@ class Solution(object):
             if heap.len == k :
                 if heap.peek() < num:
                     heap.pop()
-                    print("cringe")
-                    #heap.printf()
                     heap.add(num)
             elif heap.len <= k:
                 heap.add(num)
-            #print("{} {}".format(num, heap.peek()))
-            #heap.printf()
         return heap.peek()
