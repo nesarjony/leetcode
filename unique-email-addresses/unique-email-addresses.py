@@ -5,9 +5,7 @@ class Solution:
             email = email.split("@")
             name = email[0]
             domain = email[1]
-            
-            keep = name.split("+")[0]
-            keep = keep.replace(".", "")
+            keep = name.split("+")[0].replace(".", "")
             key = keep + "@" + domain
             valid[key] = 1
         
