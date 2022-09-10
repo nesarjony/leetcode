@@ -19,10 +19,6 @@ class Solution:
         left = self.dfs(root.left)
         right = self.dfs(root.right)
         subtree_total = left + root.val + right
-        print("subtree {}".format(subtree_total))
-        self.max = max(subtree_total, self.max)
-        a = max(left, right) + root.val
-        b = root.val
-        no_subtree_total = max(a, b)
-        self.max = max(no_subtree_total, self.max)
+        no_subtree_total = max(max(left, right) + root.val, root.val)
+        self.max = max(max(no_subtree_total, subtree_total), self.max)
         return no_subtree_total
