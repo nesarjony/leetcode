@@ -1,18 +1,14 @@
 from functools import cmp_to_key
 
 class Solution:
-    
+    def compare(self, item1, item2):
+        if item1[0] == item2[0]:
+            return item1[1] - item2[1]
+        return item1[0] - item2[0]
+        
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
-        mark = [0 for i in range(50)]
-        
         intervals.append([10005, 10005])
-        
-        def compare(item1, item2):
-            if item1[0] == item2[0]:
-                return item1[1] - item2[1]
-            return item1[0] - item2[0]
-        
-        intervals = sorted(intervals, key=cmp_to_key(compare))
+        intervals = sorted(intervals, key=cmp_to_key(self.compare))
         results = []
         start = intervals[0][0]
         end = intervals[0][1]
