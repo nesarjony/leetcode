@@ -16,21 +16,12 @@ class Solution:
         results = []
         start = intervals[0][0]
         end = intervals[0][1]
-        #print(intervals)
         for i in range(0, len(intervals) , 1):
-            if start == -1:
-                start = intervals[i][0]
-                end = intervals[i][1]
-    
             if intervals[i][0] <= end:
                 end = max(intervals[i][1], end)
-                #print("{} here {} {}".format(i, start, end))
             else:
-                #print("{} here2 {} {}".format(i, start, end))
                 results.append([start, end])
                 start = intervals[i][0]
                 end = intervals[i][1]
                 
-        
-        
         return results
