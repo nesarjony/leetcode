@@ -32,7 +32,6 @@ class Solution:
             return a[0] - b[0]
         
         logs.sort(key=cmp_to_key(compare))
-        #print(logs)
         dsu = DSU(n + 5)
         history = set()
         for log in logs:
@@ -50,8 +49,6 @@ class Solution:
             
             if len(mp) == 1 and len(history) == n:
                 return log[0]
-            #print(mp)
-            #print(history)
             
         return -1
             
