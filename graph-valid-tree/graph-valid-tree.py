@@ -6,7 +6,6 @@ class DSU:
     def find(self, node):
         if node == self.parent[node]:
             return node
-        #print(node)
         self.parent[node] = self.find(self.parent[node])
         return self.parent[node]
     
@@ -42,7 +41,6 @@ class Solution:
         
         for i in range(0, n, 1):
             parent = dsu.find(i)
-            #print(i, parent)
             mp[parent] = 1
             
         return len(mp) == 1
