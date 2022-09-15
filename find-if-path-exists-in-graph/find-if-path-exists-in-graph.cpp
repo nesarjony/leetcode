@@ -14,24 +14,30 @@ public:
             graph[v].push_back(u);
         }
         
-        return dfs(source, destination, graph, visited);
+        return bfs(source, destination, graph, visited);
     }
     
-    bool dfs(int node, int dest, vector<int>graph[], int visited[]) {
+    bool bfs(int source, int dest, vector<int>graph[], int visited[]) {
+    
+        queue<int>Q;
         
-        if(node == dest) {
-            return true;
-        }
+        Q.push(source);
         
-        visited[node] = true;
-        
-        for(int v: graph[node]) {
-            if(visited[v]) {
-                continue;
+        while(!Q.empty()) {
+            int node = Q.front();
+            Q.pop();
+            
+            if (node == dest) {
+                return true;
             }
             
-            if (dfs(v, dest, graph, visited)){
-                return true;
+            visited[node] = true;
+            
+            for(int i = 0; i < graph[node].size(); i++) {
+                int v = graph[node][i];
+                if(!visited[v]) {
+                    Q.push(v);
+                }
             }
         }
         
