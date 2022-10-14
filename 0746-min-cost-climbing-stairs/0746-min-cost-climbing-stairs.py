@@ -1,7 +1,4 @@
 class Solution:
-    def __init__(self):
-        self.dp = [-1 for i in range(1010)]
-        
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         cost.append(0)
         n = len(cost)
